@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First_Name') }}</label>
+                            <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="first_name" type="text" class="form-control{{ $errors->has('fname') ? ' is-invalid' : '' }}" name="fname"  required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last_Name') }}</label>
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="last_name" type="text" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }}" name="lname"  required autofocus>
@@ -71,8 +71,6 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
-{{--                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>--}}
-
                                 <label><input id="gender" type="radio" name="gender" value="male"> Male </label>
                                 <label><input id="gender" type="radio" name="gender" value="female"> Female</label>
                                 <input id="gender" checked type="radio" name="gender" value="" hidden>
@@ -81,12 +79,7 @@
                             </div>
                         </div>
 
-{{--                        <div class="form-group row">--}}
-{{--                        <div class="radio col-md-4">--}}
-{{--                            <label><input type="radio" name="gander" value="male">male </label>--}}
-{{--                            <label><input type="radio" name="gander" value="female">female</label>--}}
-{{--                        </div>--}}
-{{--                        </div>--}}
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

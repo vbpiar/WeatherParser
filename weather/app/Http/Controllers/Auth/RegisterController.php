@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Rules\Birthday;
 
 class RegisterController extends Controller
 {
@@ -50,11 +51,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
-            'birthday' => 'nullable|date_format:Y-m-d|before:today',
+            'birthday' => ['nullable','date_format:Y-m-d',new Birthday()],
             'email' => 'required|string|email|max:255|unique:users',
             'gender' => 'nullable|string|max:7|in:male,female',
             'password' => 'required|string|min:6|confirmed',
         ]);
+
+
     }
 
     /**
