@@ -45,7 +45,7 @@ return view('weather',['weather'=>$weather]);
 
             $time=$crawler->filter("body > section > div.content_wrap > div > div.main > div > div.__frame_sm > div.forecast_frame.hw_wrap > div.widget__wrap > div > div.widget__body > div > div.widget__row.widget__row_time > div:nth-child($i) > div ")->attr('title');
             $weather->time = $time;
-            $weather->temp = $crawler->filter("body > section > div.content_wrap > div > div.main > div > div.__frame_sm > div.forecast_frame.hw_wrap > div.widget__wrap > div > div.widget__body > div > div.widget__row.widget__row_table.widget__row_temperature > div > div > div > div:nth-child($i) > span.unit.unit_temperature_c")->text('n/a');
+            $weather->temperature = $crawler->filter("body > section > div.content_wrap > div > div.main > div > div.__frame_sm > div.forecast_frame.hw_wrap > div.widget__wrap > div > div.widget__body > div > div.widget__row.widget__row_table.widget__row_temperature > div > div > div > div:nth-child($i) > span.unit.unit_temperature_c")->text('n/a');
             $weather->wind =$crawler->filter("body > section > div.content_wrap > div > div.main > div > div.__frame_sm > div.forecast_frame.hw_wrap > div.widget__wrap > div > div.widget__body > div > div.widget__row.widget__row_table.widget__row_wind-or-gust > div:nth-child($i) > div > div > span.unit.unit_wind_m_s")->text('n/a');
             $weather->rain =$crawler->filter("body > section > div.content_wrap > div > div.main > div > div.__frame_sm > div.forecast_frame.hw_wrap > div.widget__wrap > div > div.widget__body > div > div.widget__row.widget__row_table.widget__row_precipitation > div:nth-child($i) > div > div")->text('n/a');
             $weatherArray[]= $weather;

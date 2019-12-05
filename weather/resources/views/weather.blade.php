@@ -20,7 +20,7 @@
                                                 <tr>
                                                     <td>{{$item->time}}</td>
                                                     <td>{{$item->wind}}</td>
-                                                    <td>{{$item->temp}}</td>
+                                                    <td>{{$item->temperature}}</td>
                                                     <td>{{$item->rain}}</td>
                                                 </tr>
                                             @endforeach
