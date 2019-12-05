@@ -15,7 +15,7 @@
                                 <tr>
                                     <td>{{$feedback->name}}</td>
                                     <td>{{$feedback->email}}</td>
-                                    <td>{{$feedback->text}}</td>
+                                    <td><div style="overflow: auto; height: 60px; width: 200px;">{{$feedback->text}}</div></td>
                                 </tr>
                             @endforeach
                         </table>
