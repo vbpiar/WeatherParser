@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\WeatherPrediction;
 use Symfony\Component\DomCrawler\Crawler;
-//use GuzzleHttp\Client;
+
 
 class ParseController extends Controller
 {
@@ -14,17 +14,42 @@ class ParseController extends Controller
 
         return view('weather',['weather'=>$weather]);
     }
-
-    private function loadHtml()
+    /**
+     * Get a web file (HTML, XHTML, XML, image, etc.) from a URL.  Return string html body
+     */
+    private function get_web_page()
     {
-                //get content
-        return   file_get_contents(env('WEATHER_PREDICTION_URL'));
+        $url = env('WEATHER_PREDICTION_URL');
+        $options = array(
+            CURLOPT_RETURNTRANSFER => true,     // return web page
+            CURLOPT_HEADER         => false,    // don't return headers
+            CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+            CURLOPT_ENCODING       => "",       // handle all encodings
+            CURLOPT_USERAGENT      => "spider", // who am i
+            CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+            CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+            CURLOPT_TIMEOUT        => 120,      // timeout on response
+            CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+            CURLOPT_SSL_VERIFYPEER => false     // Disabled SSL Cert checks
+        );
+
+        $ch      = curl_init( $url );
+        curl_setopt_array( $ch, $options );
+        $content = curl_exec( $ch );
+        $header  = curl_getinfo( $ch );
+        curl_close( $ch );
+
+
+        $header['content'] = $content;
+        return $header['content'];
     }
+
+
     
     private function getContent( )
     {
         //download content from page
-        $html =  $page = $this->loadHtml();
+        $html = $this->get_web_page();
 
         $crawler = new Crawler();
 
