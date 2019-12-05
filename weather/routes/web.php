@@ -46,4 +46,3 @@ Route::get('/weather',
     ]
 )->middleware('auth');
 
-//Route::get('/home', 'ParseController@index')->name('home')/*->middleware('auth')*/;
