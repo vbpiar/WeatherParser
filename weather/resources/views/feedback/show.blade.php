@@ -11,11 +11,11 @@
                                 <th>Email</th>
                                 <th>Text</th>
                             </tr>
-                            @foreach($feedback as $feedback)
+                            @foreach($feedback as $feedbackItem)
                                 <tr>
-                                    <td>{{$feedback->name}}</td>
-                                    <td>{{$feedback->email}}</td>
-                                    <td><div style="overflow: auto; height: 60px; width: 200px;">{{$feedback->text}}</div></td>
+                                    <td>{{$feedbackItem->name}}</td>
+                                    <td>{{$feedbackItem->email}}</td>
+                                    <td><div style="overflow: auto; height: 60px; width: 200px;">{{$feedbackItem->text}}</div></td>
                                 </tr>
                             @endforeach
                         </table>
