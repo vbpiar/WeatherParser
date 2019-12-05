@@ -5,20 +5,27 @@
 
     <div class="row">
         <div class="col-md-6">
-
             <form action="{{route('feedback.create')}}" method="post">
                 @csrf
                 @guest
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <label for="">Name: </label>
-                        <input type="text" name="name" class="form-control" required>
+                        <label for="name">Name: </label>
+                        <input id="name" type="text" name="name" class="form-control" required>
+                        @if ($errors->has('name'))
+                                        <strong>{{ $errors->first('name') }}</strong>
+                        @endif
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <label for="">Email: </label>
-                        <input type="email" name="email" class="form-control " required>
+                        <label for="email">Email: </label>
+                        <input id="email" type="email" name="email" class="form-control " required>
+                        @if ($errors->has('email'))
+
+                                        <strong>{{ $errors->first('email') }}</strong>
+
+                        @endif
                     </div>
                 </div>
                 @endguest
@@ -26,6 +33,9 @@
                     <div class="col-md-12">
                     <label for="text-comment">Text</label>
                     <textarea class="form-control" name="text" id="text-comment" rows="7" required></textarea>
+                        @if ($errors->has('text'))
+                                        <strong>{{ $errors->first('text') }}</strong>
+                        @endif
                     </div>
                     </div>
                 <div class="row form-group">

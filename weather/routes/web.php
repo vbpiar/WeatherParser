@@ -15,20 +15,28 @@ Route::get('/', function (){
 return view('welcome');
 });
 
-Route::get('/feedback/create',
-    function () {
-        return view('feedback.create');
-    }
-)->name('feedback.create');
+
+Route::group(['prefix' => 'feedback', 'as' => 'feedback.'], function () {
+    Route::get('/create',
+        function () {
+            return view('feedback.create');
+        }
+    )->name('create');
+
+    Route::get('/show',
+        [
+            'uses'=>'FeedbackController@show',
+            'as'=>'show'
+        ]
+    )->middleware('auth');
+
+});
 
 
 
-Route::get('/feedback/show',
-    [
-        'uses'=>'FeedbackController@show',
-        'as'=>'feedback.show'
-    ]
-)->middleware('auth');
+
+
+
 
 Route::post('/feedback/create',
     [

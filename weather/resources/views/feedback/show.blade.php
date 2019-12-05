@@ -11,6 +11,7 @@
                                 <th>Email</th>
                                 <th>Text</th>
                             </tr>
+
                             @foreach($feedback as $feedbackItem)
                                 <tr>
                                     <td>{{$feedbackItem->name}}</td>
