@@ -7,9 +7,9 @@
                     <div class="col-md-6">
                         <table class="table table-striped table-hover">
                             <tr>
-                                <th>Make</th>
-                                <th>Model</th>
-                                <th>Produced on</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Text</th>
                             </tr>
                             @foreach($feedback as $feedback)
                                 <tr>
