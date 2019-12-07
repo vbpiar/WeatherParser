@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Rules\Birthday;
 
+
 class RegisterController extends Controller
 {
     /*
