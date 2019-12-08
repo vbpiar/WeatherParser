@@ -11,7 +11,7 @@
                                 <th>Email</th>
                                 <th>Text</th>
                             </tr>
-{{--                            {{dd( DB::getQueryLog())}}--}}
+
 
                             @foreach($feedback as $feedbackItem)
                                 <tr>
@@ -26,6 +26,8 @@
                                     <td><div style="overflow: auto;">{{$feedbackItem->text}}</div></td>
                                 </tr>
                             @endforeach
+
+{{--                            {{dd( DB::getQueryLog())}}--}}
                         </table>
                     </div>
         </div>

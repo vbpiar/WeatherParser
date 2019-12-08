@@ -16,8 +16,8 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
           $request->validate([
-                'name' => 'string|max:255',
-                'email' => 'string|email|max:255|unique:users',
+                'name' => 'nullable,string|max:255',
+                'email' => 'nullable,string|email|max:255|unique:users',
                 'text' => 'required|string|max:255',
             ]);
                 // create new Feedback and store it
@@ -34,13 +34,20 @@ class FeedbackController extends Controller
 
     public function show()
     {
-        $feedback = Feedback::with('user')->get();
+//        DB::connection()->enableQueryLog();
+
+        $feedback = Feedback::with(['user' => function($query){
+            $query->select('id','fname','lname','email');
+        }])->get(['name','email','text','user_id']);
+
+//        dd($feedback);
         return view('feedback.show',['feedback'=>$feedback]);
     }
 
     public function create()
     {
         return view('feedback.create');
+
     }
 
 
