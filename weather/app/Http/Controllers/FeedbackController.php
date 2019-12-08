@@ -16,8 +16,8 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
           $request->validate([
-                'name' => 'nullable,string|max:255',
-                'email' => 'nullable,string|email|max:255|unique:users',
+                'name' => 'string|max:255',
+                'email' => 'string|email|max:255|unique:users',
                 'text' => 'required|string|max:255',
             ]);
                 // create new Feedback and store it
