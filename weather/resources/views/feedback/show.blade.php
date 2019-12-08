@@ -19,7 +19,7 @@
                                         <td>{{$feedbackItem->name}}</td>
                                         <td>{{$feedbackItem->email}}</td>
                                     @else
-                                        <td>{{$feedbackItem->user->fname .$feedbackItem->user->lname}}</td>
+                                        <td>{{$feedbackItem->user->fname.' '.$feedbackItem->user->lname}}</td>
                                         <td>{{$feedbackItem->user->email}}</td>
                                         @endif
 
