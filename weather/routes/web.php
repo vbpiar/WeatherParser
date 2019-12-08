@@ -11,17 +11,17 @@
 |
 */
 
-Route::get('/', function (){
-return view('welcome');
-});
-
+Route::get('/',[
+    'uses' => 'HomeController@index',
+    'as' => 'home'
+]);
 
 Route::group(['prefix' => 'feedback', 'as' => 'feedback.'], function () {
+
     Route::get('/create',
-        function () {
-            return view('feedback.create');
-        }
-    )->name('create');
+        ['uses'=>'FeedbackController@create',
+            'as'=>'create'
+        ]);
 
     Route::get('/show',
         [
@@ -30,26 +30,18 @@ Route::group(['prefix' => 'feedback', 'as' => 'feedback.'], function () {
         ]
     )->middleware('auth');
 
+    Route::post('/store',
+        [
+            'uses'=>'FeedbackController@store',
+            'as'=>'store'
+        ]);
 });
-
-
-
-
-
-
-
-Route::post('/feedback/create',
-    [
-        'uses'=>'FeedbackController@create',
-        'as'=>'feedback.create'
-    ]);
-
 
 Auth::routes();
 
 Route::get('/weather',
     [
-        'uses'=>'ParseController@index',
+        'uses'=>'WeatherController@index',
         'as'=>'weather.index'
     ]
 )->middleware('auth');

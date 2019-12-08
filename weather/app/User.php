@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
+
+    protected $table = 'users';
     use Notifiable;
 
     /**

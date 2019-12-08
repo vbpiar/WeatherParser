@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <form action="{{route('feedback.create')}}" method="post">
+            <form action="{{route('feedback.store')}}" method="post">
                 @csrf
                 @guest
                 <div class="row form-group">
@@ -40,7 +40,7 @@
                     </div>
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-success w-50 float-right">Ad Post</button>
+                        <button type="submit" class="btn btn-success w-50 float-right">Ad Feedback</button>
                     </div>
                 </div>
             </form>

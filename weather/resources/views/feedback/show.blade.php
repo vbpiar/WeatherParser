@@ -11,11 +11,18 @@
                                 <th>Email</th>
                                 <th>Text</th>
                             </tr>
+{{--                            {{dd( DB::getQueryLog())}}--}}
 
                             @foreach($feedback as $feedbackItem)
                                 <tr>
-                                    <td>{{$feedbackItem->name}}</td>
-                                    <td>{{$feedbackItem->email}}</td>
+                                    @if($feedbackItem->name)
+                                        <td>{{$feedbackItem->name}}</td>
+                                        <td>{{$feedbackItem->email}}</td>
+                                    @else
+                                        <td>{{$feedbackItem->user->fname .$feedbackItem->user->lname}}</td>
+                                        <td>{{$feedbackItem->user->email}}</td>
+                                        @endif
+
                                     <td><div style="overflow: auto;">{{$feedbackItem->text}}</div></td>
                                 </tr>
                             @endforeach
@@ -23,4 +30,6 @@
                     </div>
         </div>
     </div>
+
 @endsection
+
